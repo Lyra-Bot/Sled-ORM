@@ -1,14 +1,18 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+mod connection;
+mod orm;
+mod trees;
+mod macros;
+
+
+pub struct Connection {
+    pub db: sled::Db
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+pub struct ORM {
+    pub conn: Connection
+}
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
+pub struct Tree {
+    pub conn: Connection,
+    pub tree: sled::Tree
 }

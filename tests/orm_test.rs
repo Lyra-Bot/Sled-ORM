@@ -4,7 +4,7 @@ mod tests {
     use serde::{Serialize, Deserialize};
     use tempfile::tempdir;
     use std::path::Path;
-    use Sled_ORM::Connection;
+    use sled_orm::Connection;
     // Modelo de prueba
     #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
     struct TestUser {

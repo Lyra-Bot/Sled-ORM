@@ -62,3 +62,28 @@ let retrieved_user = users_tree.get::<_, User>(&user.id)?
 assert_eq!(retrieved_user, user);
         
 ```
+
+## Simple Transaction
+
+
+```rust
+
+tree.transaction(|tx| {
+    let current_value: Option<i32> = tx.get(b"balance")?;
+    
+    if let Some(balance) = current_value {
+        if balance < 100 {
+            // Rollback manual - saldo insuficiente
+            return Err(ConflictableTransactionError::Abort(
+                "You dont have money".into()
+            ));
+        }
+        
+        // Update Balance
+        tx.insert(b"balance", &(balance - 100))?;
+    }
+    
+    Ok(())
+})?;
+
+```

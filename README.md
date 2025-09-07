@@ -73,7 +73,6 @@ tree.transaction(|tx| {
     
     if let Some(balance) = current_value {
         if balance < 100 {
-            // Rollback manual - saldo insuficiente
             return Err(ConflictableTransactionError::Abort(
                 "You dont have money".into()
             ));

@@ -63,7 +63,7 @@ assert_eq!(retrieved_user, user);
         
 ```
 
-## Simple Transaction
+### Simple Transaction
 
 
 ```rust
